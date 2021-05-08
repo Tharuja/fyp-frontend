@@ -20,50 +20,50 @@ import React from "react";
 import classnames from "classnames";
 
 // reactstrap components
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Button, Container, Row, Col } from "reactstrap";
 
 // core components
 // import { Player } from 'video-react';
 // import "../../node_modules/video-react/dist/video-react.css"; // import css
 
-import Video  from "../assets/videos/cctv.mp4"
+import Video from "../assets/videos/cctv.mp4";
 
 class Index extends React.Component {
-
-  
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      videos:[
-        {src:Video, name:"CCTV -FA1"},
-        {src:Video, name:"CCTV -FA2"},
-        {src:Video, name:"CCTV -FA3"},
-        {src:Video, name:"CCTV -G4"},
-        {src:Video, name:"CCTV -G5"},
-        {src:Video, name:"CCTV -G6"},
-    ]
+      videos: [
+        { src: Video, name: "CCTV -FA1" },
+        { src: Video, name: "CCTV -FA2" },
+        { src: Video, name: "CCTV -FA3" },
+        { src: Video, name: "CCTV -G4" },
+        { src: Video, name: "CCTV -G5" },
+        { src: Video, name: "CCTV -G6" },
+      ],
     };
-  };
-
+  }
 
   render() {
-
-    const vidoeList = this.state.videos.map(video =>
+    const vidoeList = this.state.videos.map((video) => (
       <Col>
         {/* <Player
           playsInline
           poster={video.poster}
           src={video.src}
         /> */}
-        <video src={video.src} width="400" height="300" controls="controls" autoplay="false" />
-        <Button className="my-4" color="Secondary" type="button"> {video.name} </Button> 
+        <video
+          src={video.src}
+          width="400"
+          height="300"
+          controls="controls"
+          autoplay="false"
+        />
+        <Button className="my-4" color="Secondary" type="button">
+          {" "}
+          {video.name}{" "}
+        </Button>
       </Col>
-    );
+    ));
 
     return (
       <>
@@ -72,13 +72,10 @@ class Index extends React.Component {
           <Container fluid>
             <div className="header-body">
               <h1>CCTV Videos in the Restaurant</h1>
-            <Row>
-              {vidoeList}
-            </Row>
+              <Row>{vidoeList}</Row>
             </div>
           </Container>
         </div>
-        
       </>
     );
   }
