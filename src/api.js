@@ -1,4 +1,4 @@
-export const LoginUrl='http://localhost:8080/api/login'
-export const LoginTestMode=false
+export const LoginUrl = "http://localhost:4000/api/v1/login";
+export const LoginTestMode = false;
 
-export const LOGGED_IN_KEY='LoggedIn'
+export const LOGGED_IN_KEY = "LoggedIn";
