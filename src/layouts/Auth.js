@@ -25,22 +25,22 @@ import AuthNavbar from "components/Navbars/AuthNavbar.js";
 import AuthFooter from "components/Footers/AuthFooter.js";
 
 import routes from "routes.js";
-import {LOGGED_IN_KEY} from "../api";
+import { LOGGED_IN_KEY } from "../api";
 
 class Auth extends React.Component {
   componentDidMount() {
     document.body.classList.add("bg-default");
 
     //Check Login
-    let isLoggedIn=localStorage.getItem(LOGGED_IN_KEY)
-    if(isLoggedIn==='true'){
-      this.props.history.push('/admin/dashboard')
+    let isLoggedIn = localStorage.getItem(LOGGED_IN_KEY);
+    if (isLoggedIn === "true") {
+      this.props.history.push("/admin/dashboard");
     }
   }
   componentWillUnmount() {
     document.body.classList.remove("bg-default");
   }
-  getRoutes = routes => {
+  getRoutes = (routes) => {
     return routes.map((prop, key) => {
       if (prop.layout === "/auth") {
         return (
@@ -66,7 +66,10 @@ class Auth extends React.Component {
                 <Row className="justify-content-center">
                   <Col lg="5" md="6">
                     <h1 className="text-white">Welcome!</h1>
-                    <h1 className="text-white">Activity Analysis System<br/>- CurryMuch Restaurant - </h1>
+                    <h1 className="text-white">
+                      Activity Analysis System
+                      <br />- CurryMuch Restaurant -{" "}
+                    </h1>
                   </Col>
                 </Row>
               </div>

@@ -18,7 +18,7 @@
 import React from "react";
 
 // reactstrap components
-import {Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
 class InteractionHeader extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class InteractionHeader extends React.Component {
             backgroundImage:
               "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
+            backgroundPosition: "center top",
           }}
         >
           {/* Mask */}
@@ -40,10 +40,11 @@ class InteractionHeader extends React.Component {
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="12" md="10">
-                <h1 className="display-2 text-white">Payment Interactions</h1>
+                <h1 className="display-2 text-white">
+                  Customer Payment Interactions
+                </h1>
                 <p className="text-white mt-0 mb-5">
-                  This is your work space. You can create any segments here regarding your project
-                  
+                  Analyse customer-cashier interactions for payment activity
                 </p>
               </Col>
             </Row>
