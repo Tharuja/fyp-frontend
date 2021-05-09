@@ -31,11 +31,11 @@ class FoodHeader extends React.Component {
             backgroundImage:
               "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
+            backgroundPosition: "center"
           }}
         >
           {/* Mask */}
-          <span className="mask bg-gradient-default opacity-8" />
+          <span className="mask bg-gradient-default opacity-6" />
           {/* Header container */}
           <Container className="d-flex align-items-center" fluid>
             <Row>

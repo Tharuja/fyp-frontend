@@ -35,12 +35,12 @@ class GroupHeader extends React.Component {
           }}
         >
           {/* Mask */}
-          <span className="mask bg-gradient-default opacity-8" />
+          <span className="mask bg-gradient-default opacity-6" />
           {/* Header container */}
           <Container className="d-flex align-items-center" fluid>
             <Row>
               <Col lg="9" md="10">
-                <h1 className="display-2 text-white">Arrived People</h1>
+                <h1 className="display-2 text-white">Arrived Customers</h1>
                 <p className="text-white mt-0 mb-5">
                 How customers arrive at the restaurant whether as groups, couples, or individuals.                   
                 </p>

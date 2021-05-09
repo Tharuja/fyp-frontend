@@ -33,33 +33,58 @@ import {
 // core components
 import UserHeader from "components/Headers/GroupHeader.js";
 
-import Video  from "../../assets/videos/cctv.mp4"
+import GA_1  from "../../assets/videos/group/GA_1.mp4"
+import GA_2  from "../../assets/videos/group/GA_2.mp4"
+import GA_3  from "../../assets/videos/group/GA_3.mp4"
+
+
+import Loading from "components/common/loading";
 
 class Profile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-       outputVideo:Video,
        allFoods: [],
-       selectedVideo : "GA-1"
+       selectedVideo : GA_1,
+       loading: true
       };
     this.handleClick = this.handleClick.bind(this)
   } 
   
-  handleClick(cameraName){
+  handleClick = (cameraName) => {
     //e.preventDefault();
-    axios.get("http://localhost:4000/api/v1/foods/" + cameraName)
+    axios
+      .get("http://localhost:4000/api/v1/foods/" + cameraName)
       .then(res => {
         const foods = res.data;
         this.setState({
           allFoods:foods,
-          outputVideo:Video,  
-          selectedVideo:cameraName
+          loading:foods.length > 0 ? false:true
         })
-        //console.log(foods[0].food_no)
+        //console.log(foods[0].amount)
       })
+      .catch((e) => console.log(e));
+    this.switchVideo(cameraName)
   }
 
+  switchVideo = (cameraName) => {
+    switch (cameraName) {
+      case "GA_1":
+        this.setState({ outputVideo: GA_1, selectedVideo: GA_1 });
+        break;
+
+      case "GA_2":
+        this.setState({ outputVideo: GA_2, selectedVideo: GA_2 });
+        break;
+
+      case "GA_3":
+        this.setState({ outputVideo: GA_3, selectedVideo: GA_3 });
+        break;
+
+      default:
+        break;
+    }
+  };
 
   render() {
 
@@ -89,47 +114,50 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                       <Button
-                        outline={this.state.selectedVideo === "GA-1" ? false : true}
+                        outline={this.state.selectedVideo === GA_1 ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("GA-1")}
+                        onClick={() => this.handleClick("GA_1")}
                         size="lg"
                       > CCTV -GA-1 </Button>
                       <Button
-                        outline={this.state.selectedVideo === "GA-2" ? false : true}
+                        outline={this.state.selectedVideo === GA_2 ? false : true}
                         color="danger"
                         href="#pablo"
-                        onClick={() => this.handleClick("GA-2")}
+                        onClick={() => this.handleClick("GA_2")}
                         size="lg"
                       > CCTV -GA-3 </Button>
                       <Button
-                        outline={this.state.selectedVideo === "GA-3" ? false : true}
+                        outline={this.state.selectedVideo === GA_3 ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("GA-3")}
+                        onClick={() => this.handleClick("GA_3")}
                         size="lg"
                       > CCTV -GA-3 </Button>                      
                 </CardBody>
 
                 <CardBody>
-                <h3>Predicted Statistics </h3>
-                <video src={this.state.outputVideo} width="800" height="400" controls="controls" autoplay="false" />
+                <video src={this.state.selectedVideo} width="800" height="400" controls="controls" autoplay="false" />
                 </CardBody>
 
                 <CardBody>
-                <table class="table align-items-center table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">Camera No</th>
-                    <th scope="col">Food Type</th>
-                    <th scope="col">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {foodRecords}
-                </tbody>
-              </table>                      
+                <h3>Predicted Statistics </h3>
+                {this.state.loading?
+                  <Loading/> :
+                  <table class="table align-items-center table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Index</th>
+                      <th scope="col">Camera No</th>
+                      <th scope="col">Food Type</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {foodRecords}
+                  </tbody>
+                </table>   
+                }                   
                 </CardBody>
               </Card>
             </Col>
