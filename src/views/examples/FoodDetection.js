@@ -92,7 +92,7 @@ class Profile extends React.Component {
       <th scope="row">{index}</th>
       <td>{foodRecord.cctv_video_no}</td>
       <td>{foodRecord.food_type}</td>
-      <td>{foodRecord.amount}</td>
+      <td>{foodRecord.food_amount}</td>
     </tr>
     );
 

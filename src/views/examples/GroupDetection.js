@@ -44,7 +44,7 @@ class Profile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-       allFoods: [],
+       allGroups: [],
        selectedVideo : GA_1,
        loading: true
       };
@@ -54,14 +54,14 @@ class Profile extends React.Component {
   handleClick = (cameraName) => {
     //e.preventDefault();
     axios
-      .get("http://localhost:4000/api/v1/foods/" + cameraName)
+      .get("http://localhost:4000/api/v1/groups/" + cameraName)
       .then(res => {
-        const foods = res.data;
+        const groups = res.data;
         this.setState({
-          allFoods:foods,
-          loading:foods.length > 0 ? false:true
+          allGroups:groups,
+          loading:groups.length > 0 ? false:true
         })
-        //console.log(foods[0].amount)
+        //console.log(groups[0].amount)
       })
       .catch((e) => console.log(e));
     this.switchVideo(cameraName)
@@ -70,15 +70,15 @@ class Profile extends React.Component {
   switchVideo = (cameraName) => {
     switch (cameraName) {
       case "GA_1":
-        this.setState({ outputVideo: GA_1, selectedVideo: GA_1 });
+        this.setState({ selectedVideo: GA_1 });
         break;
 
       case "GA_2":
-        this.setState({ outputVideo: GA_2, selectedVideo: GA_2 });
+        this.setState({ selectedVideo: GA_2 });
         break;
 
       case "GA_3":
-        this.setState({ outputVideo: GA_3, selectedVideo: GA_3 });
+        this.setState({ selectedVideo: GA_3 });
         break;
 
       default:
@@ -88,12 +88,13 @@ class Profile extends React.Component {
 
   render() {
 
-    const foodRecords = this.state.allFoods.map((foodRecord,index) =>
+    const groupRecords = this.state.allGroups.map((groupRecord,index) =>
       <tr>
       <th scope="row">{index}</th>
-      <td>{foodRecord.cctv_video_no}</td>
-      <td>{foodRecord.food_type}</td>
-      <td>{foodRecord.amount}</td>
+      <td>{groupRecord.cctv_video_no}</td>
+      <td>{groupRecord.group_id}</td>     
+      <td>{groupRecord.group_type}</td>
+      <td>{groupRecord.members_amount}</td>
     </tr>
     );
 
@@ -149,12 +150,13 @@ class Profile extends React.Component {
                     <tr>
                       <th scope="col">Index</th>
                       <th scope="col">Camera No</th>
-                      <th scope="col">Food Type</th>
-                      <th scope="col">Amount</th>
+                      <th scope="col">Group id</th>
+                      <th scope="col">Group Type</th>
+                      <th scope="col">Number of members</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {foodRecords}
+                    {groupRecords}
                   </tbody>
                 </table>   
                 }                   
