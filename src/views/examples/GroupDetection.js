@@ -138,7 +138,7 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                <video src={this.state.selectedVideo} width="800" height="400" controls="controls" autoplay="false" />
+                <video src={this.state.selectedVideo} width="1000" height="600" controls="controls" autoplay="false" />
                 </CardBody>
 
                 <CardBody>
@@ -150,7 +150,7 @@ class Profile extends React.Component {
                     <tr>
                       <th scope="col">Index</th>
                       <th scope="col">Camera No</th>
-                      <th scope="col">Id</th>
+                      <th scope="col">Assigned Id</th>
                       <th scope="col">Arrival Type</th>
                       <th scope="col">Number of members</th>
                     </tr>

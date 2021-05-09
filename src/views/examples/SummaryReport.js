@@ -141,7 +141,7 @@ class Profile extends React.Component {
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
                     <Col xs="8">
-                      <h3 className="mb-0">All statistics</h3>
+                      <h2 className="mb-0">All Statistics</h2>
                     </Col>
                   </Row>
                 </CardHeader>
@@ -164,13 +164,13 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                <h3>Customer Types </h3>
+                <h3>Customers Arrival Type </h3>
                   <table class="table align-items-center table-dark">
                   <thead>
                     <tr>
                       <th scope="col">Index</th>
                       <th scope="col">Camera No</th>
-                      <th scope="col">Id</th>
+                      <th scope="col">Assigned Id</th>
                       <th scope="col">Arrival Type</th>
                       <th scope="col">Number of members</th>
                     </tr>
@@ -198,7 +198,7 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                <h3>Wash room access </h3>
+                <h3>Wash Room Access </h3>
                   <table class="table align-items-center table-dark">
                   <thead>
                     <tr>
