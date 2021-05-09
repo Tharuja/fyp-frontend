@@ -12,18 +12,32 @@ import {
 } from "reactstrap";
 
 // core components
+import axios from "axios";
 import UserHeader from "components/Headers/InteractionHeader.js";
 
 import test1 from "../../assets/videos/payment interaction/test1.mp4";
 import test2 from "../../assets/videos/payment interaction/test2.mp4";
 import test3 from "../../assets/videos/payment interaction/test8.mp4";
+import { API } from "api";
+import InteractionTable from "components/interaction/table";
+import Loading from "components/common/loading";
 
 class Profile extends React.Component {
   state = {
     video: test1,
     selectedVideo: 1,
+    data: [],
+    loading: true,
   };
 
+  componentDidMount() {
+    axios
+      .get(`${API}/interaction`)
+      .then((res) => {
+        this.setState({ data: res.data, loading: false });
+      })
+      .catch((e) => console.log(e));
+  }
   switchVideo = (video) => {
     switch (video) {
       case "1":
@@ -44,7 +58,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { video, selectedVideo } = this.state;
+    const { video, selectedVideo, loading, data } = this.state;
     return (
       <>
         <UserHeader />
@@ -104,36 +118,7 @@ class Profile extends React.Component {
 
                 <CardBody>
                   <h3>Predicted Statistics </h3>
-                  <table className="table align-items-center table-dark">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {loading ? <Loading /> : <InteractionTable data={data} />}
                 </CardBody>
               </Card>
             </Col>
