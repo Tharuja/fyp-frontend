@@ -17,6 +17,8 @@
 */
 import React from "react";
 
+import axios from 'axios';
+
 // reactstrap components
 import {
   Button,
@@ -36,20 +38,38 @@ class Profile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-       outputVideo:Video
+       outputVideo:Video,
+       allFoods: []
       };
     this.handleClick = this.handleClick.bind(this)
   } 
   
-  handleClick(inputVideo){
+  handleClick(cameraName){
     //e.preventDefault();
-    this.setState({
-      outputVideo:Video  // get the output video for the input video
-    })
+    axios.get("http://localhost:4000/api/v1/foods/" + cameraName)
+      .then(res => {
+        const foods = res.data;
+        this.setState({
+          allFoods:foods,
+          outputVideo:Video  
+        })
+        //console.log(foods[0].food_no)
+      })
+
   }
 
 
   render() {
+
+    const foodRecords = this.state.allFoods.map((foodRecord,index) =>
+      <tr>
+      <th scope="row">{index}</th>
+      <td>{foodRecord.cctv_video_no}</td>
+      <td>{foodRecord.food_type}</td>
+      <td>{foodRecord.amount}</td>
+    </tr>
+    );
+
     return (
       <>
         <UserHeader />
@@ -69,7 +89,7 @@ class Profile extends React.Component {
                       <Button
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("CCTV -G1")}
+                        onClick={() => this.handleClick("10")}
                         size="lg"
                       > CCTV -G1 </Button>
                       <Button
@@ -95,31 +115,14 @@ class Profile extends React.Component {
                 <table class="table align-items-center table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Index</th>
+                    <th scope="col">Camera No</th>
+                    <th scope="col">Food Type</th>
+                    <th scope="col">Amount</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {foodRecords}
                 </tbody>
               </table>                      
                 </CardBody>
