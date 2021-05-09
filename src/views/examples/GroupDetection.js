@@ -150,8 +150,8 @@ class Profile extends React.Component {
                     <tr>
                       <th scope="col">Index</th>
                       <th scope="col">Camera No</th>
-                      <th scope="col">Group id</th>
-                      <th scope="col">Group Type</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Arrival Type</th>
                       <th scope="col">Number of members</th>
                     </tr>
                   </thead>
