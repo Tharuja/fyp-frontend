@@ -136,7 +136,7 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                <video src={this.state.selectedVideo} width="800" height="400" controls="controls" autoplay="false" />
+                <video src={this.state.selectedVideo} width="1000" height="600" controls="controls" autoplay="false" />
                 </CardBody>
 
                 <CardBody>

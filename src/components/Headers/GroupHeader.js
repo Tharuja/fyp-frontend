@@ -39,10 +39,10 @@ class GroupHeader extends React.Component {
           {/* Header container */}
           <Container className="d-flex align-items-center" fluid>
             <Row>
-              <Col lg="9" md="10">
-                <h1 className="display-2 text-white">Arrived Customers</h1>
+              <Col lg="10" md="10">
+                <h1 className="display-2 text-white">Customers Arrival Type</h1>
                 <p className="text-white mt-0 mb-5">
-                How customers arrive at the restaurant whether as groups, couples, or individuals.                   
+                How customers arrive at the restaurant...whether as groups, couples, or individuals..                   
                 </p>
               </Col>
             </Row>
