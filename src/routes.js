@@ -22,6 +22,7 @@ import FoodDetection from "views/examples/FoodDetection.js";
 import VehicleDetection from "views/examples/VehicleDetection.js";
 import InteractionDetection from "views/examples/InteractionDetection.js";
 import WashroomDetection from "views/examples/WashroomDetection.js";
+import SummaryReport from "views/examples/SummaryReport.js";
 import Login from "views/examples/Login.js";
 
 var routes = [
@@ -41,7 +42,7 @@ var routes = [
   },
   {
     path: "/group-detection",
-    name: "Arrived People",
+    name: "Arrived Customers",
     icon: "ni ni-bold-right text-success",
     component: GroupDetection,
     layout: "/admin"
@@ -74,6 +75,13 @@ var routes = [
     component: WashroomDetection,
     layout: "/admin"
   },
+  {
+    path: "/summary-report",
+    name: "Summary Report",
+    icon: "ni ni-chart-bar-32 text-danger",
+    component: SummaryReport,
+    layout: "/admin"
+  },  
   {
     path: "/login",
     name: "Login",

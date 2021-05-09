@@ -29,44 +29,72 @@ import {
   Row,
   Col
 } from "reactstrap";
+
 // core components
 import UserHeader from "components/Headers/GroupHeader.js";
 
-import Video  from "../../assets/videos/cctv.mp4"
+import GA_1  from "../../assets/videos/group/GA_1.mp4"
+import GA_2  from "../../assets/videos/group/GA_2.mp4"
+import GA_3  from "../../assets/videos/group/GA_3.mp4"
+
+
+import Loading from "components/common/loading";
 
 class Profile extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-       outputVideo:Video,
-       allFoods: []
+       allGroups: [],
+       selectedVideo : GA_1,
+       loading: true
       };
     this.handleClick = this.handleClick.bind(this)
   } 
   
-  handleClick(cameraName){
+  handleClick = (cameraName) => {
     //e.preventDefault();
-    axios.get("http://localhost:4000/api/v1/foods/" + cameraName)
+    axios
+      .get("http://localhost:4000/api/v1/groups/" + cameraName)
       .then(res => {
-        const foods = res.data;
+        const groups = res.data;
         this.setState({
-          allFoods:foods,
-          outputVideo:Video  
+          allGroups:groups,
+          loading:groups.length > 0 ? false:true
         })
-        //console.log(foods[0].food_no)
+        //console.log(groups[0].amount)
       })
-
+      .catch((e) => console.log(e));
+    this.switchVideo(cameraName)
   }
 
+  switchVideo = (cameraName) => {
+    switch (cameraName) {
+      case "GA_1":
+        this.setState({ selectedVideo: GA_1 });
+        break;
+
+      case "GA_2":
+        this.setState({ selectedVideo: GA_2 });
+        break;
+
+      case "GA_3":
+        this.setState({ selectedVideo: GA_3 });
+        break;
+
+      default:
+        break;
+    }
+  };
 
   render() {
 
-    const foodRecords = this.state.allFoods.map((foodRecord,index) =>
+    const groupRecords = this.state.allGroups.map((groupRecord,index) =>
       <tr>
       <th scope="row">{index}</th>
-      <td>{foodRecord.cctv_video_no}</td>
-      <td>{foodRecord.food_type}</td>
-      <td>{foodRecord.amount}</td>
+      <td>{groupRecord.cctv_video_no}</td>
+      <td>{groupRecord.group_id}</td>     
+      <td>{groupRecord.group_type}</td>
+      <td>{groupRecord.members_amount}</td>
     </tr>
     );
 
@@ -87,44 +115,51 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                       <Button
+                        outline={this.state.selectedVideo === GA_1 ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("10")}
+                        onClick={() => this.handleClick("GA_1")}
                         size="lg"
-                      > CCTV -G1 </Button>
+                      > CCTV -GA-1 </Button>
                       <Button
+                        outline={this.state.selectedVideo === GA_2 ? false : true}
                         color="danger"
                         href="#pablo"
-                        onClick={() => this.handleClick("CCTV -G1")}
+                        onClick={() => this.handleClick("GA_2")}
                         size="lg"
-                      > CCTV -G2 </Button>
+                      > CCTV -GA-3 </Button>
                       <Button
+                        outline={this.state.selectedVideo === GA_3 ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("CCTV -G3")}
+                        onClick={() => this.handleClick("GA_3")}
                         size="lg"
-                      > CCTV -G3 </Button>                      
+                      > CCTV -GA-3 </Button>                      
+                </CardBody>
+
+                <CardBody>
+                <video src={this.state.selectedVideo} width="800" height="400" controls="controls" autoplay="false" />
                 </CardBody>
 
                 <CardBody>
                 <h3>Predicted Statistics </h3>
-                <video src={this.state.outputVideo} width="800" height="400" controls="controls" autoplay="false" />
-                </CardBody>
-
-                <CardBody>
-                <table class="table align-items-center table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">Index</th>
-                    <th scope="col">Camera No</th>
-                    <th scope="col">Food Type</th>
-                    <th scope="col">Amount</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {foodRecords}
-                </tbody>
-              </table>                      
+                {this.state.loading?
+                  <Loading/> :
+                  <table class="table align-items-center table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Index</th>
+                      <th scope="col">Camera No</th>
+                      <th scope="col">Id</th>
+                      <th scope="col">Arrival Type</th>
+                      <th scope="col">Number of members</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {groupRecords}
+                  </tbody>
+                </table>   
+                }                   
                 </CardBody>
               </Card>
             </Col>
