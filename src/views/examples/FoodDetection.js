@@ -17,6 +17,8 @@
 */
 import React from "react";
 
+import axios from 'axios';
+
 // reactstrap components
 import {
   Button,
@@ -36,8 +38,39 @@ import Video  from "../../assets/videos/cctv.mp4"
 class Profile extends React.Component {
   constructor(props){
     super(props);
-  }  
+    this.state = {
+       outputVideo:Video,
+       allFoods: [],
+       selectedVideo : "FA-1"
+      };
+    this.handleClick = this.handleClick.bind(this)
+  } 
+
+  handleClick(cameraName){
+    //e.preventDefault();
+    axios.get("http://localhost:4000/api/v1/foods/" + cameraName)
+      .then(res => {
+        const foods = res.data;
+        this.setState({
+          allFoods:foods,
+          outputVideo:Video,  
+          selectedVideo:cameraName
+        })
+        //console.log(foods[0].food_no)
+      })
+  }
+
   render() {
+
+    const foodRecords = this.state.allFoods.map((foodRecord,index) =>
+      <tr>
+      <th scope="row">{index}</th>
+      <td>{foodRecord.cctv_video_no}</td>
+      <td>{foodRecord.food_type}</td>
+      <td>{foodRecord.amount}</td>
+    </tr>
+    );
+
     return (
       <>
         <UserHeader />
@@ -55,59 +88,45 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                       <Button
+                        outline={this.state.selectedVideo === "FA-1" ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={() => this.handleClick("FA-1")}
                         size="lg"
-                      > CCTV -FD1 </Button>
+                      > CCTV -FA-1 </Button>
                       <Button
+                        outline={this.state.selectedVideo === "FA-2" ? false : true}
                         color="danger"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={() => this.handleClick("FA-2")}
                         size="lg"
-                      > CCTV -FD2 </Button>
+                      > CCTV -FA-3 </Button>
                       <Button
+                        outline={this.state.selectedVideo === "FA-3" ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={e => e.preventDefault()}
+                        onClick={() => this.handleClick("FA-3")}
                         size="lg"
-                      > CCTV -FD3 </Button>                      
+                      > CCTV -FA-3 </Button>                      
                 </CardBody>
 
                 <CardBody>
                 <h3>Predicted Statistics </h3>
-                <video src={Video} width="800" height="400" controls="controls" autoplay="false" />
+                <video src={this.state.outputVideo} width="800" height="400" controls="controls" autoplay="false" />
                 </CardBody>
 
                 <CardBody>
                 <table class="table align-items-center table-dark">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Index</th>
+                    <th scope="col">Camera No</th>
+                    <th scope="col">Food Type</th>
+                    <th scope="col">Amount</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  {foodRecords}
                 </tbody>
               </table>                      
                 </CardBody>

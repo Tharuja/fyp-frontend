@@ -31,7 +31,7 @@ class GroupHeader extends React.Component {
             backgroundImage:
               "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
+            backgroundPosition: "center"
           }}
         >
           {/* Mask */}
@@ -42,7 +42,7 @@ class GroupHeader extends React.Component {
               <Col lg="9" md="10">
                 <h1 className="display-2 text-white">Arrived People</h1>
                 <p className="text-white mt-0 mb-5">
-                About how customers arrive at the restaurant whether as groups, couples, or individuals.                   
+                How customers arrive at the restaurant whether as groups, couples, or individuals.                   
                 </p>
               </Col>
             </Row>

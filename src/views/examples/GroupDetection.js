@@ -29,6 +29,7 @@ import {
   Row,
   Col
 } from "reactstrap";
+
 // core components
 import UserHeader from "components/Headers/GroupHeader.js";
 
@@ -39,7 +40,8 @@ class Profile extends React.Component {
     super(props);
     this.state = {
        outputVideo:Video,
-       allFoods: []
+       allFoods: [],
+       selectedVideo : "GA-1"
       };
     this.handleClick = this.handleClick.bind(this)
   } 
@@ -51,11 +53,11 @@ class Profile extends React.Component {
         const foods = res.data;
         this.setState({
           allFoods:foods,
-          outputVideo:Video  
+          outputVideo:Video,  
+          selectedVideo:cameraName
         })
         //console.log(foods[0].food_no)
       })
-
   }
 
 
@@ -87,23 +89,26 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                       <Button
+                        outline={this.state.selectedVideo === "GA-1" ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("10")}
+                        onClick={() => this.handleClick("GA-1")}
                         size="lg"
-                      > CCTV -G1 </Button>
+                      > CCTV -GA-1 </Button>
                       <Button
+                        outline={this.state.selectedVideo === "GA-2" ? false : true}
                         color="danger"
                         href="#pablo"
-                        onClick={() => this.handleClick("CCTV -G1")}
+                        onClick={() => this.handleClick("GA-2")}
                         size="lg"
-                      > CCTV -G2 </Button>
+                      > CCTV -GA-3 </Button>
                       <Button
+                        outline={this.state.selectedVideo === "GA-3" ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("CCTV -G3")}
+                        onClick={() => this.handleClick("GA-3")}
                         size="lg"
-                      > CCTV -G3 </Button>                      
+                      > CCTV -GA-3 </Button>                      
                 </CardBody>
 
                 <CardBody>

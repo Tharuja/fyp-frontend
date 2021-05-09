@@ -42,7 +42,7 @@ class FoodHeader extends React.Component {
               <Col lg="9" md="10">
                 <h1 className="display-2 text-white">Ordered Food Items</h1>
                 <p className="text-white mt-0 mb-5">
-                  About food items ordered by customers..Specifies whether they are meal, milk or drinks               
+                  Food items ordered by customers..Specifies whether they are meal, milk or drinks               
                 </p>
               </Col>
             </Row>
