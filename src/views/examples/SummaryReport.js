@@ -21,7 +21,6 @@ import axios from 'axios';
 
 // reactstrap components
 import {
-  Button,
   Card,
   CardHeader,
   CardBody,
@@ -32,6 +31,8 @@ import {
 
 // core components
 import UserHeader from "components/Headers/SummaryReportHeader.js";
+
+import FoodProgress from "./FoodProgress.js";
 
 class Profile extends React.Component {
   constructor(props){
@@ -90,7 +91,6 @@ class Profile extends React.Component {
           })
           .catch((e) => console.log(e));
   }
-
 
   render() {
 
@@ -160,7 +160,8 @@ class Profile extends React.Component {
                   <tbody>
                     {foodRecords}
                   </tbody>
-                </table>                
+                </table>   
+                <FoodProgress data = {this.state.allFoods}/>          
                 </CardBody>
 
                 <CardBody>
