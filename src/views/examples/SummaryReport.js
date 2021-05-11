@@ -33,6 +33,7 @@ import {
 import UserHeader from "components/Headers/SummaryReportHeader.js";
 
 import FoodProgress from "./FoodProgress.js";
+import GroupPie from "./GroupPie.js";
 
 class Profile extends React.Component {
   constructor(props){
@@ -166,6 +167,7 @@ class Profile extends React.Component {
 
                 <CardBody>
                 <h3>Customers Arrival Type </h3>
+                <GroupPie data = {this.state.allGroups}/>   <br/>       
                   <table class="table align-items-center table-dark">
                   <thead>
                     <tr>
