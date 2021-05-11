@@ -34,8 +34,10 @@ import {
 import UserHeader from "components/Headers/GroupHeader.js";
 
 import GA_1  from "../../assets/videos/group/GA_1.mp4"
-import GA_2  from "../../assets/videos/group/GA_2.mp4"
+import GA_8  from "../../assets/videos/group/GA_8.mp4"
+import GB_8  from "../../assets/videos/group/GB_8.mp4"
 import GA_3  from "../../assets/videos/group/GA_3.mp4"
+import GA_17  from "../../assets/videos/group/GA_17.mp4"
 
 
 import Loading from "components/common/loading";
@@ -73,13 +75,21 @@ class Profile extends React.Component {
         this.setState({ selectedVideo: GA_1 });
         break;
 
-      case "GA_2":
-        this.setState({ selectedVideo: GA_2 });
-        break;
-
       case "GA_3":
         this.setState({ selectedVideo: GA_3 });
         break;
+
+      case "GA_8":
+        this.setState({ selectedVideo: GA_8 });
+        break;
+      
+      case "GB_8":
+        this.setState({ selectedVideo: GB_8 });
+        break;
+
+      case "GA_17":
+        this.setState({ selectedVideo: GA_17 });
+        break;  
 
       default:
         break;
@@ -122,19 +132,33 @@ class Profile extends React.Component {
                         size="lg"
                       > CCTV -GA-1 </Button>
                       <Button
-                        outline={this.state.selectedVideo === GA_2 ? false : true}
-                        color="danger"
-                        href="#pablo"
-                        onClick={() => this.handleClick("GA_2")}
-                        size="lg"
-                      > CCTV -GA-3 </Button>
-                      <Button
                         outline={this.state.selectedVideo === GA_3 ? false : true}
                         color="primary"
                         href="#pablo"
                         onClick={() => this.handleClick("GA_3")}
                         size="lg"
-                      > CCTV -GA-3 </Button>                      
+                      > CCTV -GA-3 </Button>
+                      <Button
+                        outline={this.state.selectedVideo === GA_8 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("GA_8")}
+                        size="lg"
+                      > CCTV -GA-8 </Button>   
+                      <Button
+                        outline={this.state.selectedVideo === GA_17 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("GA_17")}
+                        size="lg"
+                      > CCTV -GA-17 </Button>   
+                      <Button
+                        outline={this.state.selectedVideo === GB_8 ? false : true}
+                        color="danger"
+                        href="#pablo"
+                        onClick={() => this.handleClick("GB_8")}
+                        size="lg"
+                      > CCTV -GB-8 </Button>                                                                  
                 </CardBody>
 
                 <CardBody>
