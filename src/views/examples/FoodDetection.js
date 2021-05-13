@@ -33,9 +33,14 @@ import {
 // core components
 import UserHeader from "components/Headers/FoodHeader.js";
 
-import FA_1  from "../../assets/videos/food/FA_1.mp4"
-import FA_2  from "../../assets/videos/food/FA_2.mp4"
-import FA_3  from "../../assets/videos/food/FA_3.mp4"
+import FA_50  from "../../assets/videos/food/FA_50.mp4"
+import FA_71  from "../../assets/videos/food/FA_71.mp4"
+import FA_102  from "../../assets/videos/food/FA_102.mp4"
+import FA_152  from "../../assets/videos/food/FA_152.mp4"
+import FB_12  from "../../assets/videos/food/FB_12.mp4"
+import FB_15  from "../../assets/videos/food/FB_15.mp4"
+import FC_3  from "../../assets/videos/food/FC_3.mp4"
+import FC_30  from "../../assets/videos/food/FC_30.mp4"
 
 import Loading from "components/common/loading";
 
@@ -44,7 +49,7 @@ class Profile extends React.Component {
     super(props);
     this.state = {
        allFoods: [],
-       selectedVideo : FA_1,
+       selectedVideo : FA_71,
        loading: true
       };
     this.handleClick = this.handleClick.bind(this)
@@ -68,17 +73,37 @@ class Profile extends React.Component {
 
   switchVideo = (cameraName) => {
     switch (cameraName) {
-      case "FA_1":
-        this.setState({ outputVideo: FA_1, selectedVideo: FA_1 });
+      case "FA_50":
+        this.setState({ selectedVideo: FA_50 });
         break;
 
-      case "FA_2":
-        this.setState({ outputVideo: FA_2, selectedVideo: FA_2 });
+      case "FA_71":
+        this.setState({ selectedVideo: FA_71 });
         break;
 
-      case "FA_3":
-        this.setState({ outputVideo: FA_3, selectedVideo: FA_3 });
+      case "FA_102":
+        this.setState({ selectedVideo: FA_102 });
         break;
+
+      case "FA_152":
+        this.setState({ selectedVideo: FA_152 });
+        break;
+
+      case "FB_12":
+        this.setState({ selectedVideo: FB_12 });
+        break;
+
+      case "FB_15":
+        this.setState({ selectedVideo: FB_15 });
+        break;
+
+      case "FC_3":
+        this.setState({ selectedVideo: FC_3 });
+        break;  
+
+      case "FC_30":
+        this.setState({ selectedVideo: FC_30 });
+        break;  
 
       default:
         break;
@@ -92,7 +117,7 @@ class Profile extends React.Component {
       <th scope="row">{index}</th>
       <td>{foodRecord.cctv_video_no}</td>
       <td>{foodRecord.food_type}</td>
-      <td>{foodRecord.food_amount}</td>
+      <td>{foodRecord.amount}</td>
     </tr>
     );
 
@@ -113,26 +138,62 @@ class Profile extends React.Component {
                 </CardHeader>
                 <CardBody>
                       <Button
-                        outline={this.state.selectedVideo === FA_1 ? false : true}
+                        outline={this.state.selectedVideo === FA_71 ? false : true}
                         color="primary"
                         href="#pablo"
-                        onClick={() => this.handleClick("FA_1")}
+                        onClick={() => this.handleClick("FA_71")}
                         size="lg"
-                      > CCTV -FA-1 </Button>
+                      > CCTV -FA-71 </Button>
                       <Button
-                        outline={this.state.selectedVideo === FA_2 ? false : true}
+                        outline={this.state.selectedVideo === FA_50 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FA_50")}
+                        size="lg"
+                      > CCTV -FA-50 </Button>
+                      <Button
+                        outline={this.state.selectedVideo === FA_102 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FA_102")}
+                        size="lg"
+                      > CCTV -FA-102 </Button>      
+                      <Button
+                        outline={this.state.selectedVideo === FA_152 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FA_152")}
+                        size="lg"
+                      > CCTV -FA-152 </Button>                       
+                      <Button
+                        outline={this.state.selectedVideo === FB_12 ? false : true}
                         color="danger"
                         href="#pablo"
-                        onClick={() => this.handleClick("FA_2")}
+                        onClick={() => this.handleClick("FB_12")}
                         size="lg"
-                      > CCTV -FA-3 </Button>
+                      > CCTV -FB-12 </Button>
                       <Button
-                        outline={this.state.selectedVideo === FA_3 ? false : true}
-                        color="primary"
+                        outline={this.state.selectedVideo === FB_15 ? false : true}
+                        color="danger"
                         href="#pablo"
-                        onClick={() => this.handleClick("FA_3")}
+                        onClick={() => this.handleClick("FB_15")}
                         size="lg"
-                      > CCTV -FA-3 </Button>                      
+                      > CCTV -FB-15 </Button>
+                      <Button
+                        outline={this.state.selectedVideo === FC_3 ? false : true}
+                        color="success"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FC_3")}
+                        size="lg"
+                      > CCTV -FC-3 </Button>
+                      <Button
+                        outline={this.state.selectedVideo === FC_30 ? false : true}
+                        color="success"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FC_30")}
+                        size="lg"
+                      > CCTV -FC-30 </Button>
+
                 </CardBody>
 
                 <CardBody>
