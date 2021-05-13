@@ -100,7 +100,7 @@ class Profile extends React.Component {
       <th scope="row">{index}</th>
       <td>{foodRecord.cctv_video_no}</td>
       <td>{foodRecord.food_type}</td>
-      <td>{foodRecord.food_amount}</td>
+      <td>{foodRecord.amount}</td>
     </tr>
     );
 
@@ -148,24 +148,6 @@ class Profile extends React.Component {
                 </CardHeader>
 
                 <CardBody>
-                <h3>Ordered Food Items </h3>
-                  <table class="table align-items-center table-dark">
-                  <thead>
-                    <tr>
-                      <th scope="col">Index</th>
-                      <th scope="col">Camera No</th>
-                      <th scope="col">Food Type</th>
-                      <th scope="col">Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {foodRecords}
-                  </tbody>
-                </table>   
-                <FoodProgress data = {this.state.allFoods}/>          
-                </CardBody>
-
-                <CardBody>
                 <h3>Customers Arrival Type </h3>
                 <GroupPie data = {this.state.allGroups}/>   <br/>       
                   <table class="table align-items-center table-dark">
@@ -182,6 +164,24 @@ class Profile extends React.Component {
                     {groupRecords}
                   </tbody>
                 </table>                  
+                </CardBody>
+
+                <CardBody>
+                <h3>Ordered Food Items </h3>
+                  <FoodProgress data = {this.state.allFoods}/>          
+                  <table class="table align-items-center table-dark">
+                  <thead>
+                    <tr>
+                      <th scope="col">Index</th>
+                      <th scope="col">Camera No</th>
+                      <th scope="col">Food Type</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {foodRecords}
+                  </tbody>
+                </table>   
                 </CardBody>
 
                 <CardBody>

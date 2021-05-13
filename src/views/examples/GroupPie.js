@@ -14,6 +14,7 @@ const GroupPie = ({ data }) => {
             i = i + data.members_amount
     }
     );
+    console.log(data)
 
     const state = {
         labels: ['Groups', 'Couples', 'Individuals'],
@@ -30,19 +31,17 @@ const GroupPie = ({ data }) => {
                     '#5D4C8F',
                     '#067F40',
                 ],
-                data: [g, c, i]
+                data: [((g * 100) / (g + c + i)).toFixed(0), ((c * 100) / (g + c + i)).toFixed(0), ((i * 100) / (g + c + i)).toFixed(0)]
             }
         ]
     }
-
     return (
-
         <Doughnut height="70px"
             data={state}
             options={{
                 title: {
                     display: true,
-                    text: 'Customers Arrival Types',
+                    text: 'Customers Arrival Types Percentage ',
                     fontSize: 20
                 },
                 legend: {
