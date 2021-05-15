@@ -21,7 +21,7 @@ import React from "react";
 import {
   Button,
   Card,
-  CardHeader,
+  //CardHeader,
   CardBody,
   FormGroup,
   Form,
@@ -30,31 +30,29 @@ import {
   InputGroupText,
   InputGroup,
   Row,
-  Col
+  Col,
 } from "reactstrap";
-import {LOGGED_IN_KEY, LoginTestMode, LoginUrl} from "../../api";
+import { LOGGED_IN_KEY, LoginTestMode, LoginUrl } from "../../api";
 
 class Login extends React.Component {
-
   constructor(props) {
     super(props);
-    this.state = {username: '',password:''};
+    this.state = { username: "", password: "" };
   }
 
   handleUsernameChange = (event) => {
-    this.setState({username: event.target.value});
-  }
+    this.setState({ username: event.target.value });
+  };
 
-  handlePasswordChange = (event) =>{
-    this.setState({password: event.target.value});
-  }
+  handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value });
+  };
 
   render() {
     return (
       <>
         <Col lg="5" md="7">
           <Card className="bg-secondary shadow border-0">
-
             <CardBody className="px-lg-5 py-lg-5">
               <div className="text-center text-muted mb-4">
                 <small>Log in with credentials</small>
@@ -67,7 +65,11 @@ class Login extends React.Component {
                         <i className="ni ni-email-83" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="Username" value={this.state.username} onChange={this.handleUsernameChange}/>
+                    <Input
+                      placeholder="Username"
+                      value={this.state.username}
+                      onChange={this.handleUsernameChange}
+                    />
                   </InputGroup>
                 </FormGroup>
                 <FormGroup>
@@ -77,7 +79,13 @@ class Login extends React.Component {
                         <i className="ni ni-lock-circle-open" />
                       </InputGroupText>
                     </InputGroupAddon>
-                    <Input placeholder="Password" type="password" autoComplete="new-password" value={this.state.password} onChange={this.handlePasswordChange} />
+                    <Input
+                      placeholder="Password"
+                      type="password"
+                      autoComplete="new-password"
+                      value={this.state.password}
+                      onChange={this.handlePasswordChange}
+                    />
                   </InputGroup>
                 </FormGroup>
                 <div className="custom-control custom-control-alternative custom-checkbox">
@@ -94,35 +102,45 @@ class Login extends React.Component {
                   </label>
                 </div>
                 <div className="text-center">
-                <Button className="my-4" color="primary" type="button" onClick={()=>{
+                  <Button
+                    className="my-4"
+                    color="primary"
+                    type="button"
+                    onClick={() => {
+                      console.log("login details", {
+                        username: this.state.username,
+                        password: this.state.password,
+                      });
 
-                    console.log("login details",{username:this.state.username,password:this.state.password})
-
-                    if(LoginTestMode) {
-                      localStorage.setItem(LOGGED_IN_KEY,'true')
-                      this.props.history.push('/admin/dashboard')
-                      return
-                    }
-
-                    const requestOptions = {
-                      method: 'POST',
-                      headers:  {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                      },
-                      body: JSON.stringify({username:this.state.username,password:this.state.password})
-                    };
-                    fetch(LoginUrl,requestOptions).then(res=>{
-                      console.log(res)
-                      if(res.status && res.status===200) {
-                        localStorage.setItem(LOGGED_IN_KEY,'true')
-                        this.props.history.push('/admin/dashboard')
-                        return
+                      if (LoginTestMode) {
+                        localStorage.setItem(LOGGED_IN_KEY, "true");
+                        this.props.history.push("/admin/dashboard");
+                        return;
                       }
-                      else
-                        alert("Login error")
-                    }).catch(err=>console.log(err))
-                    }}>
+
+                      const requestOptions = {
+                        method: "POST",
+                        headers: {
+                          Accept: "application/json",
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                          username: this.state.username,
+                          password: this.state.password,
+                        }),
+                      };
+                      fetch(LoginUrl, requestOptions)
+                        .then((res) => {
+                          console.log(res);
+                          if (res.status && res.status === 200) {
+                            localStorage.setItem(LOGGED_IN_KEY, "true");
+                            this.props.history.push("/admin/dashboard");
+                            return;
+                          } else alert("Login error");
+                        })
+                        .catch((err) => console.log(err));
+                    }}
+                  >
                     Login
                   </Button>
                 </div>
@@ -134,7 +152,7 @@ class Login extends React.Component {
               <a
                 className="text-light"
                 href="#pablo"
-                onClick={e => e.preventDefault()}
+                onClick={(e) => e.preventDefault()}
               >
                 <small>Forgot password?</small>
               </a>
@@ -143,7 +161,7 @@ class Login extends React.Component {
               <a
                 className="text-light"
                 href="#pablo"
-                onClick={e => e.preventDefault()}
+                onClick={(e) => e.preventDefault()}
               >
                 <small>Create new account</small>
               </a>
