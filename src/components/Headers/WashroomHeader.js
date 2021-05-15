@@ -18,7 +18,7 @@
 import React from "react";
 
 // reactstrap components
-import {Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 
 class WashroomHeader extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class WashroomHeader extends React.Component {
             backgroundImage:
               "url(" + require("assets/img/theme/profile-cover.jpg") + ")",
             backgroundSize: "cover",
-            backgroundPosition: "center top"
+            backgroundPosition: "center top",
           }}
         >
           {/* Mask */}
@@ -42,8 +42,7 @@ class WashroomHeader extends React.Component {
               <Col lg="12" md="10">
                 <h1 className="display-2 text-white">Wash Room Access</h1>
                 <p className="text-white mt-0 mb-5">
-                  This is your work space. You can create any segments here regarding your project
-                  
+                  Analyse washroom access times by customers
                 </p>
               </Col>
             </Row>

@@ -17,7 +17,7 @@
 */
 import React from "react";
 // node.js library that concatenates classes (strings)
-import classnames from "classnames";
+// import classnames from "classnames";
 
 // reactstrap components
 import { Button, Container, Row, Col } from "reactstrap";
