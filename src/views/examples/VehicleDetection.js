@@ -27,17 +27,52 @@ import {
   Row,
   Col
 } from "reactstrap";
-
+import axios from "axios";
 // core components
 import UserHeader from "components/Headers/VehicleHeader.js";
 
-import Video  from "../../assets/videos/cctv.mp4"
+import test1 from "../../assets/videos/vehicle/test1.mp4";
+import { API } from "api";
+import Loading from "components/common/loading";
 
 class Profile extends React.Component {
-  constructor(props){
-    super(props);
-  }  
+  state = {
+    video: test1,
+    selectedVideo: 1,
+    data: [],
+    loading: true,
+  };
+
+  // componentDidMount() {
+  //   axios
+  //     .get(`${API}/washroom`)
+  //     .then((res) => {
+  //       this.setState({ data: res.data, loading: false });
+  //     })
+  //     .catch((e) => console.log(e));
+  // }
+
+  switchVideo = (video) => {
+    switch (video) {
+      case "1":
+        this.setState({ video: test1, selectedVideo: 1 });
+        break;
+
+      // case "2":
+      //   this.setState({ video: test2, selectedVideo: 2 });
+      //   break;
+
+      // case "3":
+      //   this.setState({ video: test3, selectedVideo: 3 });
+      //   break;
+
+      default:
+        break;
+    }
+  };
+
   render() {
+    const { video, selectedVideo, loading, data } = this.state;
     return (
       <>
         <UserHeader />
@@ -49,68 +84,56 @@ class Profile extends React.Component {
                 <CardHeader className="bg-white border-0">
                   <Row className="align-items-center">
                     <Col xs="8">
-                      <h3 className="mb-0">CCTV cameras for Face Detection</h3>
+                      <h3 className="mb-0">
+                        CCTV cameras for Vehicle parking detection
+                      </h3>
                     </Col>
                   </Row>
                 </CardHeader>
                 <CardBody>
-                      <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                        size="lg"
-                      > CCTV -1 </Button>
-                      <Button
-                        color="danger"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                        size="lg"
-                      > CCTV -2 </Button>
-                      <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={e => e.preventDefault()}
-                        size="lg"
-                      > CCTV -3 </Button>                      
+                  <Button
+                    outline={selectedVideo === 1 ? false : true}
+                    color="primary"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("1")}
+                    size="lg"
+                  >
+                    Video 1
+                  </Button>
+                  {/* <Button
+                    outline={selectedVideo === 2 ? false : true}
+                    color="danger"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("2")}
+                    size="lg"
+                  >
+                    Video 2
+                  </Button>
+                  <Button
+                    outline={selectedVideo === 3 ? false : true}
+                    color="success"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("3")}
+                    size="lg"
+                  >
+                    Video 3
+                  </Button> */}
                 </CardBody>
 
                 <CardBody>
-                <h3>Predicted Statistics </h3>
-                <video src={Video} width="800" height="400" controls="controls" autoplay="false" />
+                  <video
+                    src={video}
+                    width="800"
+                    height="400"
+                    controls="controls"
+                    autoPlay={true}
+                  />
                 </CardBody>
 
-                <CardBody>
-                <table class="table align-items-center table-dark">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>                      
-                </CardBody>
+                {/* <CardBody>
+                  <h3>Predicted Statistics </h3>
+                  {loading ? <Loading /> : <WashroomTable data={data} />}
+                </CardBody> */}
               </Card>
             </Col>
           </Row>
