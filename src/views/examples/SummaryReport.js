@@ -49,7 +49,7 @@ class Profile extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:4000/api/v1/foods")
+      .get("https://team-xcion-backend.herokuapp.com/api/v1/foods")
       .then(res => {
         const foods = res.data;
         this.setState({
@@ -60,7 +60,7 @@ class Profile extends React.Component {
       .catch((e) => console.log(e));
 
     axios
-        .get("http://localhost:4000/api/v1/groups")
+        .get("https://team-xcion-backend.herokuapp.com/api/v1/groups")
         .then(res => {
         const groups = res.data;
         this.setState({
@@ -71,7 +71,7 @@ class Profile extends React.Component {
         .catch((e) => console.log(e));
 
         axios
-        .get("http://localhost:4000/api/v1/interaction")
+        .get("https://team-xcion-backend.herokuapp.com/api/v1/interaction")
         .then(res => {
           const interactions = res.data;
           this.setState({
@@ -82,7 +82,7 @@ class Profile extends React.Component {
         .catch((e) => console.log(e));
   
       axios
-          .get("http://localhost:4000/api/v1/washroom")
+          .get("https://team-xcion-backend.herokuapp.com/api/v1/washroom")
           .then(res => {
           const wash = res.data;
           this.setState({

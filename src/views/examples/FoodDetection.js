@@ -58,7 +58,7 @@ class Profile extends React.Component {
   handleClick = (cameraName) => {
     //e.preventDefault();
     axios
-      .get("http://localhost:4000/api/v1/foods/" + cameraName)
+      .get("https://team-xcion-backend.herokuapp.com/api/v1/foods/" + cameraName)
       .then(res => {
         const foods = res.data;
         this.setState({
