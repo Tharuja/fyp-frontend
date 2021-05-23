@@ -35,7 +35,8 @@ import face_detection_1 from "../../assets/videos/face detection/face_detection_
 import face_detection_2 from "../../assets/videos/face detection/face_detection_2.mp4";
 import { API } from "api";
 import Loading from "components/common/loading";
-
+import FaceDetectionTable from "../../components/faceDetection/table";
+import "../../assets/css/faceDetection.css";
 class Profile extends React.Component {
   state = {
     video: face_detection_1,
@@ -44,14 +45,14 @@ class Profile extends React.Component {
     loading: true,
   };
 
-  // componentDidMount() {
-  //   axios
-  //     .get(`${API}/washroom`)
-  //     .then((res) => {
-  //       this.setState({ data: res.data, loading: false });
-  //     })
-  //     .catch((e) => console.log(e));
-  // }
+  componentDidMount() {
+    axios
+      .get(`${API}/facedetection`)
+      .then((res) => {
+        this.setState({ data: res.data, loading: false });
+      })
+      .catch((e) => console.log(e));
+  }
 
   switchVideo = (video) => {
     switch (video) {
@@ -131,10 +132,10 @@ class Profile extends React.Component {
                   />
                 </CardBody>
 
-                {/* <CardBody>
+                <CardBody>
                   <h3>Predicted Statistics </h3>
-                  {loading ? <Loading /> : <WashroomTable data={data} />}
-                </CardBody> */}
+                  {loading ? <Loading /> : <FaceDetectionTable data={data} />}
+                </CardBody>
               </Card>
             </Col>
           </Row>
