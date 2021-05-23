@@ -27,6 +27,11 @@ import { Button, Container, Row, Col } from "reactstrap";
 // import "../../node_modules/video-react/dist/video-react.css"; // import css
 
 import Video from "../assets/videos/cctv.mp4";
+import face_detection_1 from "../assets/videos/face detection/face_detection_1.mp4";
+import washroom_1 from "../assets/videos/washroom/washroom_1.mp4";
+import payment_1 from "../assets/videos/payment interaction/payment_1.mp4";
+import vehicle_1 from "../assets/videos/vehicle/vehicle_1.mp4";
+import FA_50 from "../assets/videos/food/FA_50.mp4";
 
 class Index extends React.Component {
   constructor(props) {
@@ -34,11 +39,11 @@ class Index extends React.Component {
     this.state = {
       videos: [
         { src: Video, name: "CCTV -FA1" },
-        { src: Video, name: "CCTV -FA2" },
-        { src: Video, name: "CCTV -FA3" },
-        { src: Video, name: "CCTV -G4" },
-        { src: Video, name: "CCTV -G5" },
-        { src: Video, name: "CCTV -G6" },
+        { src: FA_50, name: "CCTV -G6" },
+        { src: face_detection_1, name: "CCTV -FA2" },
+        { src: washroom_1, name: "CCTV -FA3" },
+        { src: payment_1, name: "CCTV -G4" },
+        { src: vehicle_1, name: "CCTV -G5" },
       ],
     };
   }
