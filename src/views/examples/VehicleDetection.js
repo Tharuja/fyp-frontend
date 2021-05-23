@@ -25,13 +25,13 @@ import {
   CardBody,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 import axios from "axios";
 // core components
 import UserHeader from "components/Headers/VehicleHeader.js";
 
-import test1 from "../../assets/videos/vehicle/test1.mp4";
+import test1 from "../../assets/videos/vehicle/vehicle_1.mp4";
 import { API } from "api";
 import Loading from "components/common/loading";
 

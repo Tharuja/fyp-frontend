@@ -15,9 +15,9 @@ import {
 import axios from "axios";
 import UserHeader from "components/Headers/InteractionHeader.js";
 
-import test1 from "../../assets/videos/payment interaction/test1.mp4";
-import test2 from "../../assets/videos/payment interaction/test2.mp4";
-import test3 from "../../assets/videos/payment interaction/test8.mp4";
+import test1 from "../../assets/videos/payment interaction/payment_1.mp4";
+import test2 from "../../assets/videos/payment interaction/payment_2.mp4";
+import test3 from "../../assets/videos/payment interaction/payment_8.mp4";
 import { API } from "api";
 import InteractionTable from "components/interaction/table";
 import Loading from "components/common/loading";

@@ -25,19 +25,20 @@ import {
   CardBody,
   Container,
   Row,
-  Col
+  Col,
 } from "reactstrap";
 import axios from "axios";
 // core components
 import UserHeader from "components/Headers/FaceHeader.js";
 
-import test1 from "../../assets/videos/face detection/test1.mp4";
+import face_detection_1 from "../../assets/videos/face detection/face_detection_1.mp4";
+import face_detection_2 from "../../assets/videos/face detection/face_detection_2.mp4";
 import { API } from "api";
 import Loading from "components/common/loading";
 
 class Profile extends React.Component {
   state = {
-    video: test1,
+    video: face_detection_1,
     selectedVideo: 1,
     data: [],
     loading: true,
@@ -55,12 +56,12 @@ class Profile extends React.Component {
   switchVideo = (video) => {
     switch (video) {
       case "1":
-        this.setState({ video: test1, selectedVideo: 1 });
+        this.setState({ video: face_detection_1, selectedVideo: 1 });
         break;
 
-      // case "2":
-      //   this.setState({ video: test2, selectedVideo: 2 });
-      //   break;
+      case "2":
+        this.setState({ video: face_detection_2, selectedVideo: 2 });
+        break;
 
       // case "3":
       //   this.setState({ video: test3, selectedVideo: 3 });
@@ -100,7 +101,7 @@ class Profile extends React.Component {
                   >
                     Video 1
                   </Button>
-                  {/* <Button
+                  <Button
                     outline={selectedVideo === 2 ? false : true}
                     color="danger"
                     href="#pablo"
@@ -109,7 +110,7 @@ class Profile extends React.Component {
                   >
                     Video 2
                   </Button>
-                  <Button
+                  {/*<Button
                     outline={selectedVideo === 3 ? false : true}
                     color="success"
                     href="#pablo"

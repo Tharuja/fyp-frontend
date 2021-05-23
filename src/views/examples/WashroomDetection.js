@@ -31,9 +31,9 @@ import axios from "axios";
 
 // core components
 import UserHeader from "components/Headers/WashroomHeader.js";
-import test1 from "../../assets/videos/washroom/test1.mp4";
-import test2 from "../../assets/videos/washroom/test2.mp4";
-import test3 from "../../assets/videos/washroom/test3.mp4";
+import test1 from "../../assets/videos/washroom/washroom_1.mp4";
+import test2 from "../../assets/videos/washroom/washroom_2.mp4";
+import test3 from "../../assets/videos/washroom/washroom_3.mp4";
 import WashroomTable from "components/washroom/table";
 import { API } from "api";
 import Loading from "components/common/loading";
