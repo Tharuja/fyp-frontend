@@ -115,6 +115,7 @@ class Profile extends React.Component {
     const foodRecords = this.state.allFoods.map((foodRecord,index) =>
       <tr>
       <th scope="row">{index}</th>
+      <td>{foodRecord.date}</td>
       <td>{foodRecord.cctv_video_no}</td>
       <td>{foodRecord.food_type}</td>
       <td>{foodRecord.amount}</td>
@@ -208,6 +209,7 @@ class Profile extends React.Component {
                   <thead>
                     <tr>
                       <th scope="col">Index</th>
+                      <th scope="col">Date</th>
                       <th scope="col">Camera No</th>
                       <th scope="col">Food Type</th>
                       <th scope="col">Amount</th>
