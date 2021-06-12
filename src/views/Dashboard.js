@@ -26,20 +26,20 @@ import { Button, Container, Row, Col } from "reactstrap";
 // import { Player } from 'video-react';
 // import "../../node_modules/video-react/dist/video-react.css"; // import css
 
-import Video from "../assets/videos/cctv.mp4";
+import GA_17 from "../assets/videos/group/GA_17.mp4";
 import face_detection_1 from "../assets/videos/face detection/face_detection_1.mp4";
 import washroom_1 from "../assets/videos/washroom/washroom_1.mp4";
 import payment_1 from "../assets/videos/payment interaction/payment_1.mp4";
 import vehicle_1 from "../assets/videos/vehicle/vehicle_1.mp4";
-import FA_50 from "../assets/videos/food/FA_50.mp4";
+import FA_44 from "../assets/videos/food/FA_44.mp4";
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       videos: [
-        { src: Video, name: "CCTV -FA1" },
-        { src: FA_50, name: "CCTV -G6" },
+        { src: GA_17, name: "CCTV -GA17" },
+        { src: FA_44, name: "CCTV -FA44" },
         { src: face_detection_1, name: "CCTV -FA2" },
         { src: washroom_1, name: "CCTV -FA3" },
         { src: payment_1, name: "CCTV -G4" },

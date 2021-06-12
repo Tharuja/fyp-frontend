@@ -38,6 +38,8 @@ import GA_8  from "../../assets/videos/group/GA_8.mp4"
 import GB_8  from "../../assets/videos/group/GB_8.mp4"
 import GA_3  from "../../assets/videos/group/GA_3.mp4"
 import GA_17  from "../../assets/videos/group/GA_17.mp4"
+import GB_4  from "../../assets/videos/group/GB_4.mp4"
+import GA_77  from "../../assets/videos/group/GA_77.mp4"
 
 
 import Loading from "components/common/loading";
@@ -90,6 +92,14 @@ class Profile extends React.Component {
       case "GA_17":
         this.setState({ selectedVideo: GA_17 });
         break;  
+
+      case "GA_77":
+        this.setState({ selectedVideo: GA_77 });
+        break; 
+
+      case "GB_4":
+        this.setState({ selectedVideo: GB_4 });
+        break; 
 
       default:
         break;
@@ -153,12 +163,26 @@ class Profile extends React.Component {
                         size="lg"
                       > CCTV -GA-17 </Button>   
                       <Button
+                        outline={this.state.selectedVideo === GA_77 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("GA_77")}
+                        size="lg"
+                      > CCTV -GA-77 </Button>                        
+                      <Button
+                        outline={this.state.selectedVideo === GB_4 ? false : true}
+                        color="danger"
+                        href="#pablo"
+                        onClick={() => this.handleClick("GB_4")}
+                        size="lg"
+                      > CCTV -GB-4 </Button>     
+                      <Button
                         outline={this.state.selectedVideo === GB_8 ? false : true}
                         color="danger"
                         href="#pablo"
                         onClick={() => this.handleClick("GB_8")}
                         size="lg"
-                      > CCTV -GB-8 </Button>                                                                  
+                      > CCTV -GB-8 </Button>                                                                                   
                 </CardBody>
 
                 <CardBody>
@@ -173,7 +197,7 @@ class Profile extends React.Component {
                   <thead>
                     <tr>
                       <th scope="col">Index</th>
-                      <th scope="col">Camera No</th>
+                      <th scope="col">Camera Name</th>
                       <th scope="col">Assigned Id</th>
                       <th scope="col">Arrival Type</th>
                       <th scope="col">Number of members</th>

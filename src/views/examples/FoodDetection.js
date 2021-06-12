@@ -41,6 +41,10 @@ import FB_12  from "../../assets/videos/food/FB_12.mp4"
 import FB_15  from "../../assets/videos/food/FB_15.mp4"
 import FC_3  from "../../assets/videos/food/FC_3.mp4"
 import FC_30  from "../../assets/videos/food/FC_30.mp4"
+import FC_18  from "../../assets/videos/food/FC_18.mp4"
+import FA_44  from "../../assets/videos/food/FA_44.mp4"
+import FA_45  from "../../assets/videos/food/FA_45.mp4"
+
 
 import Loading from "components/common/loading";
 
@@ -105,6 +109,18 @@ class Profile extends React.Component {
         this.setState({ selectedVideo: FC_30 });
         break;  
 
+      case "FC_18":
+        this.setState({ selectedVideo: FC_18 });
+        break;  
+          
+      case "FA_44":
+        this.setState({ selectedVideo: FA_44 });
+        break; 
+
+      case "FA_45":
+        this.setState({ selectedVideo: FA_45 });
+        break;    
+
       default:
         break;
     }
@@ -165,7 +181,21 @@ class Profile extends React.Component {
                         href="#pablo"
                         onClick={() => this.handleClick("FA_152")}
                         size="lg"
-                      > CCTV -FA-152 </Button>                       
+                      > CCTV -FA-152 </Button>            
+                      <Button
+                        outline={this.state.selectedVideo === FA_44 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FA_44")}
+                        size="lg"
+                      > CCTV -FA-44 </Button> 
+                      <Button
+                        outline={this.state.selectedVideo === FA_45 ? false : true}
+                        color="primary"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FA_45")}
+                        size="lg"
+                      > CCTV -FA-45 </Button>                                                        
                       <Button
                         outline={this.state.selectedVideo === FB_12 ? false : true}
                         color="danger"
@@ -194,6 +224,13 @@ class Profile extends React.Component {
                         onClick={() => this.handleClick("FC_30")}
                         size="lg"
                       > CCTV -FC-30 </Button>
+                      <Button
+                        outline={this.state.selectedVideo === FC_18 ? false : true}
+                        color="success"
+                        href="#pablo"
+                        onClick={() => this.handleClick("FC_18")}
+                        size="lg"
+                      > CCTV -FC-18 </Button>                      
 
                 </CardBody>
 
@@ -210,7 +247,7 @@ class Profile extends React.Component {
                     <tr>
                       <th scope="col">Index</th>
                       <th scope="col">Date</th>
-                      <th scope="col">Camera No</th>
+                      <th scope="col">Camera Name</th>
                       <th scope="col">Food Type</th>
                       <th scope="col">Amount</th>
                     </tr>

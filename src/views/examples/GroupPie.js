@@ -41,7 +41,7 @@ const GroupPie = ({ data }) => {
             options={{
                 title: {
                     display: true,
-                    text: 'Customers Arrival Types Percentage ',
+                    text: 'Customer Types Percentage ',
                     fontSize: 20
                 },
                 legend: {
