@@ -42,7 +42,7 @@ var routes = [
   },
   {
     path: "/group-detection",
-    name: "Customers Arrival Type",
+    name: "Customer Type",
     icon: "ni ni-bold-right text-success",
     component: GroupDetection,
     layout: "/admin"

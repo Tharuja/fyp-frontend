@@ -148,7 +148,7 @@ class Profile extends React.Component {
                 </CardHeader>
 
                 <CardBody>
-                <h3>Customers Arrival Type </h3>
+                <h3>Customer Types </h3>
                 <GroupPie data = {this.state.allGroups}/>   <br/>       
                   <table class="table align-items-center table-dark">
                   <thead>
