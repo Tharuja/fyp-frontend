@@ -1,20 +1,3 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.1.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from "react";
 
 // reactstrap components
@@ -34,6 +17,7 @@ import UserHeader from "components/Headers/VehicleHeader.js";
 import test1 from "../../assets/videos/vehicle/vehicle_1.mp4";
 import { API } from "api";
 import Loading from "components/common/loading";
+import VehicleTable from "components/vehicle/table";
 
 class Profile extends React.Component {
   state = {
@@ -43,14 +27,53 @@ class Profile extends React.Component {
     loading: true,
   };
 
-  // componentDidMount() {
-  //   axios
-  //     .get(`${API}/washroom`)
-  //     .then((res) => {
-  //       this.setState({ data: res.data, loading: false });
-  //     })
-  //     .catch((e) => console.log(e));
-  // }
+  compare = (a, b) => {
+    if (a.plate < b.plate) {
+      return -1;
+    }
+    if (a.plate > b.plate) {
+      return 1;
+    }
+    return 0;
+  };
+
+  componentDidMount() {
+    axios
+      .get(`${API}/vehicle`)
+      .then((res) => {
+        const arrayWithoutId = res.data.map((d) => {
+          return { plate: d.plate, date: d.date, time: d.time };
+        });
+        const result = arrayWithoutId.sort(this.compare);
+
+        const finalArray = [];
+        let arrivalTime = "";
+        let departureTime = "";
+        for (let i = 0; i < result.length - 1; i++) {
+          arrivalTime = new Date(result[i].date + " " + result[i].time);
+          departureTime = "";
+          for (let j = i + 1; j < result.length; j++) {
+            if (result[i].plate === result[j].plate) {
+              departureTime = new Date(result[j].date + " " + result[j].time);
+            } else if (!departureTime) {
+              i = j - 1;
+              break;
+            } else {
+              finalArray.push({
+                plate: result[i].plate,
+                arrivalTime,
+                departureTime,
+                duration: departureTime - arrivalTime,
+              });
+              i = j - 1;
+              break;
+            }
+          }
+        }
+        this.setState({ data: finalArray, loading: false });
+      })
+      .catch((e) => console.log(e));
+  }
 
   switchVideo = (video) => {
     switch (video) {
@@ -130,10 +153,10 @@ class Profile extends React.Component {
                   />
                 </CardBody>
 
-                {/* <CardBody>
+                <CardBody>
                   <h3>Predicted Statistics </h3>
-                  {loading ? <Loading /> : <WashroomTable data={data} />}
-                </CardBody> */}
+                  {loading ? <Loading /> : <VehicleTable data={data} />}
+                </CardBody>
               </Card>
             </Col>
           </Row>
