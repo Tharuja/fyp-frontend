@@ -30,17 +30,15 @@ import GroupPie from "./GroupPie.js";
 import { API } from "api";
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      allFoods: [],
-      allGroups: [],
-      allInteractions: [],
-      allWash: [],
-      allVehicle: [],
-      allFace: [],
-    };
-  }
+  state = {
+    allFoods: [],
+    allGroups: [],
+    allInteractions: [],
+    allWash: [],
+    allVehicle: [],
+    allFace: [],
+    avg: 0,
+  };
 
   componentDidMount() {
     axios
@@ -126,7 +124,11 @@ class Profile extends React.Component {
             }
           }
         }
-        this.setState({ allVehicle: finalArray });
+        let avg = 0;
+        finalArray.forEach((element) => {
+          avg += element.duration;
+        });
+        this.setState({ allVehicle: finalArray, avg });
       })
       .catch((e) => console.log(e));
   }
@@ -280,7 +282,14 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                  <h3>Vehicle Arrival and departure</h3>
+                  <h3>
+                    Vehicle Arrival and departure (Average ={" "}
+                    {(
+                      this.state.avg /
+                      (60000 * this.state.allVehicle.length)
+                    ).toFixed(2)}{" "}
+                    mins)
+                  </h3>
                   <table class="table align-items-center table-dark">
                     <thead>
                       <tr>

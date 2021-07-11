@@ -31,64 +31,63 @@ var routes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
     component: Dashboard,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/face-detection",
     name: "Face Recognition",
     icon: "ni ni-bold-right text-danger",
     component: FaceDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/group-detection",
     name: "Customer Type",
     icon: "ni ni-bold-right text-success",
     component: GroupDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/food-detection",
     name: "Ordered Food Items",
     icon: "ni ni-bold-right text-danger",
     component: FoodDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/vehicle-detection",
     name: "Vehicles parked",
     icon: "ni ni-bold-right text-success",
     component: VehicleDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/interaction-detection",
-    name: "Payment Interactions",
+    name: "Cashier Interactions",
     icon: "ni ni-bold-right text-danger",
     component: InteractionDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/washroom-access-detection",
     name: "Wash Room Access",
     icon: "ni ni-bold-right text-success",
     component: WashroomDetection,
-    layout: "/admin"
+    layout: "/admin",
   },
   {
     path: "/summary-report",
     name: "Summary Report",
     icon: "ni ni-chart-bar-32 text-danger",
     component: SummaryReport,
-    layout: "/admin"
-  },  
+    layout: "/admin",
+  },
   {
     path: "/login",
     name: "Login",
     icon: "ni ni-user-run text-default",
     component: Login,
-    layout: "/auth"
+    layout: "/auth",
   },
-
 ];
 export default routes;

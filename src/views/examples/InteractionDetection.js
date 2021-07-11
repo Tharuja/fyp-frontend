@@ -18,6 +18,7 @@ import UserHeader from "components/Headers/InteractionHeader.js";
 import test1 from "../../assets/videos/payment interaction/payment_1.mp4";
 import test2 from "../../assets/videos/payment interaction/payment_2.mp4";
 import test3 from "../../assets/videos/payment interaction/payment_8.mp4";
+import test4 from "../../assets/videos/payment interaction/payment_3.mp4";
 import { API } from "api";
 import InteractionTable from "components/interaction/table";
 import Loading from "components/common/loading";
@@ -50,6 +51,10 @@ class Profile extends React.Component {
 
       case "3":
         this.setState({ video: test3, selectedVideo: 3 });
+        break;
+
+      case "4":
+        this.setState({ video: test4, selectedVideo: 4 });
         break;
 
       default:
@@ -103,6 +108,15 @@ class Profile extends React.Component {
                     size="lg"
                   >
                     Video 3
+                  </Button>
+                  <Button
+                    outline={selectedVideo === 4 ? false : true}
+                    color="primary"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("4")}
+                    size="lg"
+                  >
+                    Video 4
                   </Button>
                 </CardBody>
 
