@@ -33,6 +33,7 @@ import UserHeader from "components/Headers/FaceHeader.js";
 
 import face_detection_1 from "../../assets/videos/face detection/face_detection_1.mp4";
 import face_detection_2 from "../../assets/videos/face detection/face_detection_2.mp4";
+import face_detection_3 from "../../assets/videos/face detection/face_detection_3.mp4";
 import { API } from "api";
 import Loading from "components/common/loading";
 import FaceDetectionTable from "../../components/faceDetection/table";
@@ -64,9 +65,9 @@ class Profile extends React.Component {
         this.setState({ video: face_detection_2, selectedVideo: 2 });
         break;
 
-      // case "3":
-      //   this.setState({ video: test3, selectedVideo: 3 });
-      //   break;
+      case "3":
+        this.setState({ video: face_detection_3, selectedVideo: 3 });
+        break;
 
       default:
         break;
@@ -111,7 +112,7 @@ class Profile extends React.Component {
                   >
                     Video 2
                   </Button>
-                  {/*<Button
+                  <Button
                     outline={selectedVideo === 3 ? false : true}
                     color="success"
                     href="#pablo"
@@ -119,7 +120,7 @@ class Profile extends React.Component {
                     size="lg"
                   >
                     Video 3
-                  </Button> */}
+                  </Button>
                 </CardBody>
 
                 <CardBody>
