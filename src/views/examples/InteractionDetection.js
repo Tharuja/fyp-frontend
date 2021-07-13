@@ -15,10 +15,13 @@ import {
 import axios from "axios";
 import UserHeader from "components/Headers/InteractionHeader.js";
 
-import test1 from "../../assets/videos/payment interaction/payment_1.mp4";
-import test2 from "../../assets/videos/payment interaction/payment_2.mp4";
-import test3 from "../../assets/videos/payment interaction/payment_8.mp4";
+import test1 from "../../assets/videos/payment interaction/test1.mp4";
+import test2 from "../../assets/videos/payment interaction/outputnew_1.mp4";
+import test3 from "../../assets/videos/payment interaction/outputnew_2.mp4";
 import test4 from "../../assets/videos/payment interaction/payment_3.mp4";
+import test5 from "../../assets/videos/payment interaction/test3.mp4";
+import test6 from "../../assets/videos/payment interaction/test7.mp4";
+import test7 from "../../assets/videos/payment interaction/test10.mp4";
 import { API } from "api";
 import InteractionTable from "components/interaction/table";
 import Loading from "components/common/loading";
@@ -55,6 +58,18 @@ class Profile extends React.Component {
 
       case "4":
         this.setState({ video: test4, selectedVideo: 4 });
+        break;
+
+      case "5":
+        this.setState({ video: test5, selectedVideo: 5 });
+        break;
+
+      case "6":
+        this.setState({ video: test6, selectedVideo: 6 });
+        break;
+
+      case "7":
+        this.setState({ video: test7, selectedVideo: 7 });
         break;
 
       default:
@@ -117,6 +132,33 @@ class Profile extends React.Component {
                     size="lg"
                   >
                     Video 4
+                  </Button>
+                  <Button
+                    outline={selectedVideo === 5 ? false : true}
+                    color="success"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("5")}
+                    size="lg"
+                  >
+                    Video 5
+                  </Button>
+                  <Button
+                    outline={selectedVideo === 6 ? false : true}
+                    color="danger"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("6")}
+                    size="lg"
+                  >
+                    Video 6
+                  </Button>
+                  <Button
+                    outline={selectedVideo === 7 ? false : true}
+                    color="primary"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("7")}
+                    size="lg"
+                  >
+                    Video 7
                   </Button>
                 </CardBody>
 
