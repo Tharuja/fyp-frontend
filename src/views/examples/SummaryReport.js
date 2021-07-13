@@ -62,7 +62,6 @@ class Profile extends React.Component {
         //console.log(groups[0].amount)
       })
       .catch((e) => console.log(e));
-
     axios
       .get("https://team-xcion-backend.herokuapp.com/api/v1/interaction")
       .then((res) => {
@@ -254,7 +253,9 @@ class Profile extends React.Component {
                 </CardBody>
 
                 <CardBody>
-                  <h3>Payment Interactions </h3>
+                  <h3>
+                    Payment Interactions (Total = {interactionRecords.length}){" "}
+                  </h3>
                   <table class="table align-items-center table-dark">
                     <thead>
                       <tr>
