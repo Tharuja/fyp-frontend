@@ -29,7 +29,7 @@ import { Button, Container, Row, Col } from "reactstrap";
 import GA_17 from "../assets/videos/group/GA_17.mp4";
 import face_detection_1 from "../assets/videos/face detection/face_detection_1.mp4";
 import washroom_1 from "../assets/videos/washroom/washroom_1.mp4";
-import payment_1 from "../assets/videos/payment interaction/payment_1.mp4";
+import payment_1 from "../assets/videos/payment interaction/test1.mp4";
 import vehicle_1 from "../assets/videos/vehicle/vehicle_1.mp4";
 import FA_44 from "../assets/videos/food/FA_44.mp4";
 

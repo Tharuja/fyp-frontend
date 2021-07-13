@@ -37,6 +37,8 @@ import test3 from "../../assets/videos/washroom/washroom_3.mp4";
 import test4 from "../../assets/videos/washroom/washroom_4.mp4";
 import test5 from "../../assets/videos/washroom/washroom_5.mp4";
 import test6 from "../../assets/videos/washroom/washroom_6.mp4";
+import test7 from "../../assets/videos/washroom/washroom_7.mp4";
+import test8 from "../../assets/videos/washroom/washroom_8.mp4";
 import WashroomTable from "components/washroom/table";
 import { API } from "api";
 import Loading from "components/common/loading";
@@ -82,6 +84,14 @@ class Profile extends React.Component {
 
       case "6":
         this.setState({ video: test6, selectedVideo: 6 });
+        break;
+
+      case "7":
+        this.setState({ video: test7, selectedVideo: 7 });
+        break;
+
+      case "8":
+        this.setState({ video: test8, selectedVideo: 8 });
         break;
 
       default:
@@ -157,6 +167,25 @@ class Profile extends React.Component {
                     Video 5
                   </Button>
 
+                  <Button
+                    outline={selectedVideo === 7 ? false : true}
+                    color="primary"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("7")}
+                    size="lg"
+                  >
+                    Video 6
+                  </Button>
+
+                  <Button
+                    outline={selectedVideo === 8 ? false : true}
+                    color="danger"
+                    href="#pablo"
+                    onClick={() => this.switchVideo("8")}
+                    size="lg"
+                  >
+                    Video 6
+                  </Button>
                   <Button
                     outline={selectedVideo === 6 ? false : true}
                     color="danger"
